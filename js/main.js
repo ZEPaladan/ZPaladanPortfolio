@@ -137,25 +137,21 @@ window.addEventListener("scroll", () => {
     }
 });
 
+
 window.addEventListener("scroll", () => {
 
-    const scrollY = window.scrollY;
+    const y = window.scrollY * 0.15;
 
-    // Background orbs parallax
     const orb1 = document.querySelector(".orb-1");
     const orb2 = document.querySelector(".orb-2");
     const orb3 = document.querySelector(".orb-3");
 
-    if (orb1) {
-        orb1.style.transform = `translateY(${scrollY * 0.2}px)`;
-    }
-
-    if (orb2) {
-        orb2.style.transform = `translateY(${-scrollY * 0.15}px)`;
-    }
+    if (orb1) orb1.style.transform = `translateY(${y}px)`;
+    if (orb2) orb2.style.transform = `translateY(${-y}px)`;
 
     if (orb3) {
-        orb3.style.transform = `translate(-50%, -50%) translateY(${scrollY * 0.1}px)`;
+        orb3.style.transform =
+            `translate(-50%, -50%) translateY(${y * 0.5}px)`;
     }
 
 });

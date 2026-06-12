@@ -47,21 +47,28 @@ html {
 }
 
 body {
-
     font-family: "Inter", sans-serif;
-
-    background:
-        linear-gradient(
-            180deg,
-            #05070f 0%,
-            #09111f 100%
-        );
-
     color: var(--text);
-
     overflow-x: hidden;
-
     min-height: 100vh;
+
+    /* animated gradient base */
+    background: linear-gradient(
+        120deg,
+        #05070f,
+        #0b1220,
+        #070b14,
+        #0f172a
+    );
+    background-size: 300% 300%;
+    animation: bgShift 18s ease infinite;
+}
+
+/* slow premium movement */
+@keyframes bgShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 img {
@@ -1211,35 +1218,40 @@ textarea {
 }
 
 /* Floating Orbs */
+
 .bg-orb {
     position: fixed;
     border-radius: 50%;
-    filter: blur(120px);
-    opacity: 0.25;
+    filter: blur(140px);
+    opacity: 0.22;
     z-index: -1;
     pointer-events: none;
+    transform: translate3d(0,0,0);
 }
 
+/* top-left glow */
 .orb-1 {
-    width: 300px;
-    height: 300px;
-    background: #60a5fa;
+    width: 380px;
+    height: 380px;
+    background: radial-gradient(circle, #60a5fa, transparent 70%);
     top: 10%;
     left: 5%;
 }
 
+/* bottom-right glow */
 .orb-2 {
-    width: 400px;
-    height: 400px;
-    background: #a78bfa;
-    bottom: 10%;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, #a78bfa, transparent 70%);
+    bottom: 5%;
     right: 5%;
 }
 
+/* center soft glow */
 .orb-3 {
-    width: 250px;
-    height: 250px;
-    background: #22d3ee;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, #22d3ee, transparent 70%);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -1377,4 +1389,14 @@ textarea {
     50% {
         text-shadow: 0 0 35px rgba(96,165,250,0.4);
     }
+}
+
+.noise-overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+
+    opacity: 0.05;
+    background-image: url("../assets/images/noise.jpg");
 }
